@@ -16,21 +16,21 @@ if [ ! -d "/config/build/.git" ]; then
         [[ -e /config/build/config.php ]] && rm /config/build/config.php
 fi
 
-[[ ! -d "/config/build/plugins/Codiad-Collaborative-master/.git" ]] && \
-        git clone https://github.com/Codiad/Codiad-Collaborative \
-        /config/build/plugins/Codiad-Collaborative-master/
+#[[ ! -d "/config/build/plugins/Codiad-Collaborative-master/.git" ]] && \
+#        git clone https://github.com/Codiad/Codiad-Collaborative \
+#        /config/build/plugins/Codiad-Collaborative-master/
 
-[[ ! -d "/config/build/plugins/Codiad-CodeGit-master/.git" ]] && \
-        git clone https://github.com/Andr3as/Codiad-CodeGit \
-        /config/build/plugins/Codiad-CodeGit-master/
+#[[ ! -d "/config/build/plugins/Codiad-CodeGit-master/.git" ]] && \
+#        git clone https://github.com/Andr3as/Codiad-CodeGit \
+#        /config/build/plugins/Codiad-CodeGit-master/
 
 [[ ! -d "/config/build/plugins/Codiad-DragDrop-master/.git" ]] && \
         git clone https://github.com/Andr3as/Codiad-DragDrop \
         /config/build/plugins/Codiad-DragDrop-master/
 
-[[ ! -d "/config/build/plugins/Codiad-Terminal-master/.git" ]] && \
-        git clone https://github.com/Fluidbyte/Codiad-Terminal \
-        /config/build/plugins/Codiad-Terminal-master/
+#[[ ! -d "/config/build/plugins/Codiad-Terminal-master/.git" ]] && \
+#        git clone https://github.com/Fluidbyte/Codiad-Terminal \
+#        /config/build/plugins/Codiad-Terminal-master/
 
 # copy config
 [[ ! -e /config/build/config.php ]] && \
@@ -46,6 +46,10 @@ cp -a /config/build/* /config/www/
 # permissions
 chown -R abc:abc \
         /config
+
+# disable installation of plugins
+chown root:root \
+	/config/www/plugins
 
 # fix temporary error in upstream codiad use of mb_ord()
 # https://github.com/Codiad/Codiad/issues/1082
